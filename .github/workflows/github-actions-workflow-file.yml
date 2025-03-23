@@ -3,8 +3,8 @@ on: push
 jobs:
   Example-Actions-Job:
     name: Exploring GitHub Actions
-	runs-on: ubuntu-latest
-	steps:
+    runs-on: ubuntu-latest
+    steps:
 	  # Display the event that triggered the workflow
       - run: echo "The job was triggered by a ${{ github.event_name }} event."
 	  
@@ -17,8 +17,7 @@ jobs:
 	  # Use Action located in https://github.com/actions
       - name: Check out repository code
         uses: actions/checkout@v2 
-        
-	  - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       
       - run: echo "Your repository has been copied to the path ${{ github.workspace }} on the runner."
       
@@ -27,8 +26,7 @@ jobs:
       - name: conditional step when event name is pull request
         if: ${{ github.event_name == 'pull_request' }}
         run: echo "This event is a pull request"
-		
-	  - name: List files in the repository
+      - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
       
@@ -36,8 +34,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.x'
-		  
-	      - name: Display dotnet version
+ 
+      - name: Display dotnet version
         run: dotnet --version
       
       - run: echo "The preinstalled tools are located here on the runner ${{ runner.tool_cache }}."
